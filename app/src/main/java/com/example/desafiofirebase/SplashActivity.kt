@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 
-const val SPLASH_DURATION = 5000L
+const val SPLASH_DURATION = 4000L
 
 class SplashActivity : AppCompatActivity() {
 
