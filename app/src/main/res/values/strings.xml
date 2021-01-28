@@ -10,4 +10,8 @@
     <string name="create_account">Create Account</string>
     <string name="remember">Remember</string>
     <string name="log_in">Log in</string>
+    <string name="password_cannot_be_null">Por favor, digite uma senha!</string>
+    <string name="must_contain_at_least_6_characters">A senha deve conter mais de 6 caracteres</string>
+    <string name="must_be_the_same_as_password">Senha divergente</string>
+    <string name="validate_your_email">Valide seu e-mail</string>
 </resources>
