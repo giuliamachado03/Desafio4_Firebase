@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -16,6 +19,7 @@ class RegisterFragment : Fragment() {
 
     private lateinit var _view: View
     private lateinit var _auth: FirebaseAuth
+    private lateinit var _navController: NavController
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +40,7 @@ class RegisterFragment : Fragment() {
 
         _view = view
 
-        _view.findViewById<MaterialButton>(R.id.buttonCreateAccount).setOnClickListener {
+        _view.findViewById<MaterialButton>(R.id.buttonCreateAccountRegister).setOnClickListener {
             val name =   _view.findViewById<EditText>(R.id.editTextRegisterName)
             val email =   _view.findViewById<EditText>(R.id.editTextRegisterEmail)
             val password =   _view.findViewById<EditText>(R.id.editTextRegisterPassword)
@@ -90,6 +94,9 @@ class RegisterFragment : Fragment() {
                         .setDisplayName(name).build()
 
                     user!!.updateProfile(profileUpdates)
+
+                    _view.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+
                 }else{
                     Toast.makeText(_view.context, it.exception.toString(), Toast.LENGTH_LONG).show()
                 }

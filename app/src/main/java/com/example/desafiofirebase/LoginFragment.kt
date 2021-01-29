@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 
@@ -15,6 +17,7 @@ class LoginFragment : Fragment() {
 
     private lateinit var _view: View
     private lateinit var _auth: FirebaseAuth
+    private lateinit var _navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,51 +37,49 @@ class LoginFragment : Fragment() {
 
         _view = view
 
-        _view.findViewById<Button>(R.id.buttonLogin).setOnClickListener {
-            val email = _view.findViewById<EditText>(R.id.editTextLoginEmail)
-            val password = _view.findViewById<EditText>(R.id.editTextLoginPassword)
+        _view.findViewById<Button>(R.id.buttonCreateAccountLogin).setOnClickListener {
+            _view.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
 
-            realizarLogin(email, password)
+        _view.findViewById<Button>(R.id.buttonLogin).setOnClickListener {
+            val emailContainer = _view.findViewById<EditText>(R.id.editTextLoginEmail)
+            val passwordContainer = _view.findViewById<EditText>(R.id.editTextLoginPassword)
+
+            verificaEFazLogin(emailContainer, passwordContainer)
         }
     }
 
-        private fun realizarLogin(
 
-            email: EditText,
-            password: EditText
-        ) {
+    private fun verificaEFazLogin(
+        emailContainer: EditText?,
+        passwordContainer: EditText?
+    ) {
 
-            val emailText:String = email.text.toString()
-            val passText = password.text.toString()
+        val emailText = emailContainer!!.text.toString()
+        val passText = passwordContainer!!.text.toString()
 
-                if (!emailText.isBlank()) {
-                    if (!passText.isBlank()) {
-                        realizarLogin(email, password)
-                    } else {
-                        password.error = "O campo senha não pode estar vazio"
-                    }
+        if (!emailText.isBlank()) {
+            if (!passText.isBlank()) {
+                realizarLogin(emailText, passText)
+            } else {
+                passwordContainer.error = "O campo de senha está vazio"
+            }
+        } else {
+            emailContainer.error = "O campo de email está vazio"
+        }
+    }
+
+    private fun realizarLogin(emailText: String, passText: String) {
+        val auth = FirebaseAuth.getInstance()
+        auth.signInWithEmailAndPassword(emailText, passText)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    _view.findNavController().navigate(R.id.action_loginFragment_to_gamesListFragment)
+
                 } else {
-                    email.error = "O campo email não pode estar vazio"
+                    Toast.makeText(_view.context, "Credenciais incorretas", Toast.LENGTH_SHORT).show()
                 }
             }
-
-
-         fun fazerLogin(email: String, password: String, name : String) {
-
-            val auth = FirebaseAuth.getInstance()
-
-            auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        val user = FirebaseAuth.getInstance().currentUser
-
-                        val profileUpdates = UserProfileChangeRequest.Builder()
-                            .setDisplayName(name).build()
-
-                        user!!.updateProfile(profileUpdates)
-                    }else{
-                        Toast.makeText(_view.context, it.exception.toString(), Toast.LENGTH_LONG).show()
-                    }
-                }
-        }
     }
+}
+
