@@ -1,16 +1,18 @@
-package com.example.desafiofirebase
+package com.example.desafiofirebase.gameEdit
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.desafiofirebase.R
 
-class GameDetailsFragment : Fragment() {
+class GameEditFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+
         }
     }
 
@@ -19,10 +21,10 @@ class GameDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game_details, container, false)
+        return inflater.inflate(R.layout.fragment_game_edit, container, false)
     }
 
     companion object {
 
-                }
             }
+    }

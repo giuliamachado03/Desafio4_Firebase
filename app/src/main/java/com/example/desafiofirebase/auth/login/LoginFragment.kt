@@ -1,4 +1,4 @@
-package com.example.desafiofirebase
+package com.example.desafiofirebase.auth.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.example.desafiofirebase.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 
 class LoginFragment : Fragment() {
 

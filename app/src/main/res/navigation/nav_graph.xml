@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.desafiofirebase.LoginFragment"
+        android:name="com.example.desafiofirebase.auth.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.desafiofirebase.RegisterFragment"
+        android:name="com.example.desafiofirebase.auth.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register"
         app:startDestination="@id/action_registerFragment_to_loginFragment">
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/gamesListFragment"
-        android:name="com.example.desafiofirebase.GamesListFragment"
+        android:name="com.example.desafiofirebase.gameList.GamesListFragment"
         android:label="fragment_games_list"
         tools:layout="@layout/fragment_games_list" />
 </navigation>

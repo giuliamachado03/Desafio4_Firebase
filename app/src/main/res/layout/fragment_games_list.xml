@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:padding="15dp"
     android:background="@color/ofWhite"
-    tools:context=".GamesListFragment">
+    tools:context=".gameList.GamesListFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchGames"
