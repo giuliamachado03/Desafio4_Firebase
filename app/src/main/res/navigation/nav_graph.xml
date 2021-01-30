@@ -29,7 +29,32 @@
     </fragment>
     <fragment
         android:id="@+id/gamesListFragment"
-        android:name="com.example.desafiofirebase.gameList.GamesListFragment"
+        android:name="com.example.desafiofirebase.gameList.view.GamesListFragment"
         android:label="fragment_games_list"
-        tools:layout="@layout/fragment_games_list" />
+        tools:layout="@layout/fragment_games_list" >
+        <action
+            android:id="@+id/action_gamesListFragment_to_gameEditFragment"
+            app:destination="@id/gameEditFragment" />
+        <action
+            android:id="@+id/action_gamesListFragment_to_gameDetailsFragment"
+            app:destination="@id/gameDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameEditFragment"
+        android:name="com.example.desafiofirebase.gameEdit.GameEditFragment"
+        android:label="fragment_game_edit"
+        tools:layout="@layout/fragment_game_edit" >
+        <action
+            android:id="@+id/action_gameEditFragment_to_gamesListFragment"
+            app:destination="@id/gamesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameDetailsFragment"
+        android:name="com.example.desafiofirebase.gameDetails.GameDetailsFragment"
+        android:label="fragment_game_details"
+        tools:layout="@layout/fragment_game_details" >
+        <action
+            android:id="@+id/action_gameDetailsFragment_to_gameEditFragment"
+            app:destination="@id/gameEditFragment" />
+    </fragment>
 </navigation>

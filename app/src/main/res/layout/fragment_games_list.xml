@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:padding="15dp"
     android:background="@color/ofWhite"
-    tools:context=".gameList.GamesListFragment">
+    tools:context=".gameList.view.GamesListFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchGames"
@@ -28,10 +28,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchGames"
-        tools:listitem="@layout/game_item_list" />
+        tools:listitem="@layout/fragment_game_item_list" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnRegistrarJogo"
+        android:id="@+id/buttonGameRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"

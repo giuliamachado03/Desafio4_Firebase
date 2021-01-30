@@ -25,6 +25,5 @@ class GameEditFragment : Fragment() {
     }
 
     companion object {
-
-            }
+    }
     }
